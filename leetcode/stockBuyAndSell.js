@@ -1,21 +1,25 @@
-// 121
-
 /**
  * @param {number[]} prices
  * @return {number}
  */
  var maxProfit = function(prices) {
-    let initProfitValue = prices[1]-prices[0] 
-    let maximumProfit = initProfitValue > 0 ? initProfitValue : 0
-    for(let i = 0;i<prices.length-1;i++){
-        let j = i+1;
-        while(j<prices.length){
-            profit = prices[j]-prices[i];
-            if(profit > 0 && profit > maximumProfit){
-                maximumProfit = profit
-            }
-            j++;
+    let bbp = prices[0]
+    let bsp = prices[1];
+    let profit = bsp - bbp;
+    let maxProfit = profit > 0 ? profit : 0;
+    let lowestPriceSoFar = bbp;
+    
+    for(let i =1;i<prices.length;i++){
+        if(prices[i-1] < lowestPriceSoFar){
+            lowestPriceSoFar = prices[i-1]
+        }
+        if(prices[i] - lowestPriceSoFar >= maxProfit){
+            bsp = prices[i]
+            bbp = lowestPriceSoFar
+            maxProfit = bsp-bbp
         }
     }
-    return maximumProfit;
+    let finalProfit = bsp-bbp
+    return finalProfit > 0 ? finalProfit : 0
+    
 };

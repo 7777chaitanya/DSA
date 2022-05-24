@@ -1,15 +1,23 @@
-var maxSubArray = function(nums) {
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var maxSubArray = function(nums) {
     let globalMaximum = nums[0];
-    
+            let localMax = nums[0]
+
     for(let i = 1; i< nums.length;i++){
-        let newVal = globalMaximum + nums[i]
+        let newVal = nums[i] + localMax
         if(nums[i] > newVal){
-            globalMaximum = nums[i]
+            localMax = nums[i]
         }
         else{
-            globalMaximum += nums[i]
+            localMax = newVal;
         }
-        console.log(globalMaximum)
+        if(localMax > globalMaximum){
+           globalMaximum = localMax;
+        }
+       
     }
     return globalMaximum
 };
