@@ -31,3 +31,10 @@ var findDuplicate = function (nums) {
 // Time complexity => n * log n
 // log N for binary search
 // n for finding the count of lowest numbers than mid
+
+// Space complexity => O(1)
+
+
+
+
+
