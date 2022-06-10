@@ -46,3 +46,7 @@ function inversionCountUsingMergeSort(arr) {
   inversionCountUsingMergeSort([5, 4, 3, 1, 2]);
   console.log("INVERSION COUNT =>", count);
 })();
+
+
+// TIME COMPLEXITY => O(n * log n)
+
