@@ -184,13 +184,14 @@ class SinglyLinkedList {
     this.length++;
   }
 
-  // not working properly
   delete(index) {
     if (index < 0 || index > this.length - 1) {
       return "invalid index";
     } else if (this.length === 1) {
       this.head = null;
       this.tail = null;
+    } else if (index === 0) {
+      this.head = this.head.next;
     } else {
       let current = this.head;
       let currentIndex = 0;
@@ -200,8 +201,8 @@ class SinglyLinkedList {
         currentIndex++;
       }
       current.next = current.next.next;
-      if(index === this.length-1){
-        this.tail = current
+      if (index === this.length - 1) {
+        this.tail = current;
       }
       this.length--;
     }
@@ -209,16 +210,15 @@ class SinglyLinkedList {
 }
 
 const singlyLinkedList = new SinglyLinkedList();
-console.log(singlyLinkedList.push(1));
-console.log(singlyLinkedList.push(2));
-console.log(singlyLinkedList.push(3));
+singlyLinkedList.push(1);
+singlyLinkedList.push(2);
+singlyLinkedList.push(3);
 singlyLinkedList.pop();
 singlyLinkedList.push(5);
 singlyLinkedList.pop();
 singlyLinkedList.pop();
 singlyLinkedList.push(9);
 singlyLinkedList.push(234);
-
 singlyLinkedList.shift();
 singlyLinkedList.unshift(12);
 singlyLinkedList.unshift(16);
@@ -226,6 +226,6 @@ singlyLinkedList.get(4);
 console.log(singlyLinkedList.get(3));
 singlyLinkedList.set(2, 85);
 singlyLinkedList.insert(0, 5);
-singlyLinkedList.delete(4);
+singlyLinkedList.delete(1);
 
 console.log(singlyLinkedList.printList());
