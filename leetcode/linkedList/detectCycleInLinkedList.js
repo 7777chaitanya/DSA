@@ -21,3 +21,6 @@
     }
     return false;
 };
+
+// TC => O(n) => Because we are iterating the linked list atleast once 
+// SC => O(1) => We are using constant extra space irrespective of the input size
