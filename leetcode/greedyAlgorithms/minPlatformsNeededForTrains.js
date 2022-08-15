@@ -32,3 +32,5 @@ findPlatform(arr, dep, n);
 // sort function takes O(n^2) in JS, this can be improved using merge sort
 // iterating each train arrival time with platforms Array, 
 // In Worst case, If all the train timings collide, the platforms array might contain n items
+
+// https://practice.geeksforgeeks.org/problems/minimum-platforms-1587115620/1#
