@@ -29,3 +29,6 @@ function permutations(data) {
 }
 
 permutations([1, 2, 3]);
+
+// TC => O(n * n!) => n! times O(n) function is executed
+// SC => O(n) => max depth of the recursive tree
