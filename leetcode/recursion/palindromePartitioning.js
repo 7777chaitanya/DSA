@@ -1,24 +1,39 @@
-let str = "aabb";
-let ans = [];
-function partitions(str) {
-  for (let k = 1; k <= str.length; k++) {
-    let sub = [];
-    for (let j = 0; j <= str.length - k; j++) {
-      for (let i = 0; i < str.length; ) {
-        if (i === j) {
-          sub.push(str.substring(i, i + k));
-          i += k;
-        } else {
-          sub.push(str.substring(i, i + 1));
-          i++
-        }
-      }
-      ans.push([...sub]);
+/**
+ * @param {string} s
+ * @return {string[][]}
+ */
+
+// aabb
+// 0123
+var partition = function (s) {
+  let partitions = [];
+  let ans = [];
+
+  var checkPalindrome = (str) => {
+    if (str === "") {
+      return true;
+    } else if (str[0] !== str[str.length - 1]) {
+      return false;
+    } else {
+      return checkPalindrome(str.substr(1, str.length - 2));
     }
-  }
-}
-
-partitions(str);
-console.log(ans);
-
-
+  };
+  var partitionCreator = (s) => {
+    if (s === "") {
+      ans.push([...partitions]);
+      return;
+    }
+    for (let i = 1; i <= s.length; i++) {
+      let substr = s.substring(0, i);
+      if (checkPalindrome(substr)) {
+        partitions.push(substr);
+        partitionCreator(s.substring(i, s.length));
+        partitions.pop();
+      } else {
+        continue;
+      }
+    }
+  };
+  partitionCreator(s);
+  return ans;
+};
